@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                socket-activation
-version:             0.1.0.0
+version:             0.1.0.1
 synopsis:            systemd socket activation library
 -- description:         
 homepage:            https://github.com/sakana/haskell-socket-activation
@@ -19,4 +19,8 @@ library
   exposed-modules:     Network.Socket.Activation
   c-sources:            Network/Socket/socket_info.c
   -- other-modules:       
-  build-depends:       base ==4.5.*, network ==2.3.*, unix ==2.5.*, transformers ==0.3.*
+  build-depends:
+    base >=4.5 && <5,
+    network >=2.3,
+    unix >=2.5,
+    transformers >=0.3

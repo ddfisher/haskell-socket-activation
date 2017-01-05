@@ -61,7 +61,7 @@ socketStatus fd = do
     listeningInt <- lift $ c_socket_listening fd
     case listeningInt of
       0 -> return Bound
-      1 -> return Listening
+      x | x > 0 -> return Listening
       _ -> mzero
 
 foreign import ccall unsafe "socket_family"

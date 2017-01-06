@@ -2,13 +2,13 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                socket-activation
-version:             0.1.0.1
+version:             0.1.0.2
 synopsis:            systemd socket activation library
 description:         a module for systemd socket activation.  See
                       <http://0pointer.de/blog/projects/socket-activation.html> and
                       <http://www.freedesktop.org/software/systemd/man/systemd.socket.html> for more
                       details.
-homepage:            https://github.com/sakana/haskell-socket-activation
+homepage:            https://github.com/ddfisher/haskell-socket-activation
 license:             BSD3
 license-file:        LICENSE
 author:              David Fisher
@@ -19,7 +19,7 @@ build-type:          Simple
 cabal-version:       >=1.8
 source-repository head
   type: git
-  location: https://github.com/sakana/haskell-socket-activation
+  location: https://github.com/ddfisher/haskell-socket-activation
 
 library
   exposed-modules:     Network.Socket.Activation

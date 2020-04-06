@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE ForeignFunctionInterface #-}
 -- | This is a module for systemd socket activation.  See
 -- <http://0pointer.de/blog/projects/socket-activation.html> and
@@ -33,6 +34,9 @@ getActivatedSockets = runMaybeT $ do
     mapM makeSocket [fdStart .. fdStart + listenFDs - 1]
   where makeSocket :: CInt -> MaybeT IO Socket
         makeSocket fd = do
+#if MIN_VERSION_network(3,0,0)
+          lift $ mkSocket fd
+#else
           fam  <- socketFamily fd
           typ  <- socketType fd
           stat <- socketStatus fd
@@ -72,3 +76,5 @@ foreign import ccall unsafe "socket_type"
 
 foreign import ccall unsafe "socket_listening"
   c_socket_listening :: CInt -> IO CInt
+
+#endif
